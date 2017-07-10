@@ -10,7 +10,7 @@ Technologies used in projects: Java, J2EE, Oracle PL/SQL, JSP, Swings, EJB, Hibe
 
 2)This repository is to submit all the Projects and Assignments for Web Development course 5610.
 
-3)a)root to hosted environment on Heroku - (https://rakesh-webdev-application.herokuapp.com/)
+3)a)root to hosted environment on Heroku - (https://radhakrishnan-rakesh-webdev.herokuapp.com/)
 
 b)Project -
 
