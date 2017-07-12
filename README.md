@@ -12,13 +12,6 @@ Technologies used in projects: Java, J2EE, Oracle PL/SQL, JSP, Swings, EJB, Hibe
 
 3)a)root to hosted environment on Heroku - (https://radhakrishnan-rakesh-webdev.herokuapp.com/)
 
-b)Project -
+b)Project - https://radhakrishnan-rakesh-webdev.herokuapp.com/project/index.html
 
-c)Assignment -
-
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+c)Assignment - https://radhakrishnan-rakesh-webdev.herokuapp.com/assignment/
