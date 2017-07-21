@@ -14,6 +14,15 @@ body{
     line-height: 20px;
 }
 
+.glyphicon-user-position{
+    float: right;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    padding-bottom : 30px;
+}
+
 .glyphicon-chevron-position{
     float:left;
     height: 50px;
@@ -27,10 +36,18 @@ body{
     border-color: #2e6da4;
 }
 
+.rak-navbar-color{
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
 .navbar-default .navbar-brand {
     color: white;
 }
 
+.rak-navbar-color .navbar-brand{
+    color:white;
+}
 .white {
     color: white;
 }
