@@ -37,7 +37,7 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../../pages/page-list.html">
+                        <a href="../../pages/templates/page-list.view.client.html">
                             <div class="col-xs-10">
                                 Wikipedia
                             </div>
@@ -52,7 +52,7 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../../pages/page-list.html">
+                        <a href="../../pages/templates/page-list.view.client.html">
                             <div class="col-xs-10">
                                 Twitter
                             </div>
@@ -67,7 +67,7 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../../pages/page-list.html">
+                        <a href="../../pages/templates/page-list.view.client.html">
                             <div class="col-xs-10">
                                 Facebook
                             </div>
@@ -82,7 +82,7 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../../pages/page-list.html">
+                        <a href="../../pages/templates/page-list.view.client.html">
                             <div class="col-xs-10">
                                 Amazon
                             </div>
@@ -102,20 +102,22 @@
             <input name="name"
                    type="text"
                    class="form-control"
-                   readonly
-                   value="Facebook"
-                   id="name"/>
+                   placeholder="Facebook"
+                   id="name"
+                    ng-model = "model.website.name"/>
 
             <label for="description">Description</label>
             <textarea name="description"
                       class="form-control"
                       rows="5"
                       placeholder="Largest country in the world"
-                      id="description"></textarea>
+                      id="description"
+                        ng-model = "model.website.description"></textarea>
 
             <a class="btn btn-default btn-block btn-primary"
-               href="website-list.view.client.html"
+                ng-click = "model.createWebsite(model.website)"
                role="button">Create</a>
+            <!--href="website-list.view.client.html"-->
 
             <a class="btn btn-default btn-block btn-danger"
                href="website-list.view.client.html"

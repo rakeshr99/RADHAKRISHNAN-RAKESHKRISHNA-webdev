@@ -23,9 +23,29 @@
                 controllerAs : "model"})
             .when("/user/:userId/website/new", {
                 templateUrl : "website/templates/website-new.view.client.html",
-                //controller : "websiteListController",
-                //controllerAs : "model"
+                controller : "newWebsiteController",
+                controllerAs : "model"
                 })
+            .when("/user/:userId/website/:wid", {
+                templateUrl : "website/templates/website-edit.view.client.html",
+                controller : "editWebsiteController",
+                controllerAs : "model"
+            })
+            .when("/user/:userId/website/:wid/page", {
+                templateUrl : "pages/templates/page-list.view.client.html",
+                controller : "pageListController",
+                controllerAs : "model"
+            })
+            .when("/user/:userId/website/:wid/page/new", {
+                templateUrl : "pages/templates/page-new.view.client.html",
+                controller : "newPageController",
+                controllerAs : "model"
+            })
+            .when("/user/:userId/website/:wid/page/:pageId", {
+                templateUrl : "pages/templates/page-edit.view.client.html",
+                controller : "editPageController",
+                controllerAs : "model"
+            })
 
     }
 })();

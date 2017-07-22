@@ -15,10 +15,19 @@
             "findUserById" : findUserById,
             "registerUser" : registerUser,
             "findUserByUsername" : findUserByusername,
-            "updateUser" : updateUser
+            "updateUser" : updateUser,
+            "unregister" : unregister
 
         };
         return api;
+
+        function unregister(userId){
+            var user = users.find(function (user){
+                return user._id === userId;
+            });
+            var index = users.indexOf(user);
+            users.splice(index, 1);
+        }
 
         function updateUser(userId, user){
             for(var u in users){

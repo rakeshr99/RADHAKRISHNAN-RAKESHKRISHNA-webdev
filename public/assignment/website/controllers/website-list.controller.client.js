@@ -2,7 +2,7 @@
     angular
         .module("WamApp")
         .controller("websiteListController", websiteListController);
-})();
+
 
 function websiteListController($routeParams, websiteService){
     var model = this;
@@ -14,3 +14,5 @@ function websiteListController($routeParams, websiteService){
 
     }init();
 }
+
+})();

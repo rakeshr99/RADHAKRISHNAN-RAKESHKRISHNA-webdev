@@ -1,29 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Website</title>
-    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/styles.css" rel="stylesheet"/>
-</head>
-<body>
-
+<div>
 <nav class="navbar navbar-default navbar-fixed-top nav-collapse collapsing">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <a href="page-list.html">
+        <a href="page-list.view.client.html">
             <span
                     class="glyphicon glyphicon-chevron-left white pull-left glyphicon-chevron-position">
             </span>
         </a>
         <div>
-            <a class="navbar-brand" href="#">Edit Page</a>
+            <a class="navbar-brand" href="#">New Page</a>
         </div>
             <div>
-            <a href="page-list.html">
-                <span
-                        class="glyphicon glyphicon-ok glyphicon-ok-position white" aria-expanded="true"
-                        aria-hidden="true">
+            <a ng-click="model.createPage(model.page)">
+                <span class="glyphicon glyphicon-ok glyphicon-ok-position white" aria-expanded="true"
+                    aria-hidden="true">
                 </span>
             </a>
             </div>
@@ -38,9 +28,9 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../widget/widget-list.html"><div class="col-xs-10">Blog Post</div></a>
+                        <a href="../../widget/widget-list.view.client.html"><div class="col-xs-10">Blog Post</div></a>
                         <div class="col-xs-2">
-                            <a href="page-edit.html">
+                            <a href="page-edit.view.client.html">
                         <span class="glyphicon glyphicon-cog pull-right">
                         </span>
                             </a>
@@ -49,9 +39,9 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../widget/widget-list.html"><div class="col-xs-7">Blogs</div></a>
+                        <a href="../../widget/widget-list.view.client.html"><div class="col-xs-7">Blogs</div></a>
                         <div class="col-xs-5">
-                            <a href="page-edit.html">
+                            <a href="page-edit.view.client.html">
                         <span class="glyphicon glyphicon-cog pull-right">
                         </span>
                             </a>
@@ -60,9 +50,9 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../widget/widget-list.html"><div class="col-xs-10">Home</div></a>
+                        <a href="../../widget/widget-list.view.client.html"><div class="col-xs-10">Home</div></a>
                         <div class="col-xs-2">
-                            <a href="page-edit.html">
+                            <a href="page-edit.view.client.html">
                         <span class="glyphicon glyphicon-cog pull-right">
                         </span>
                             </a>
@@ -71,9 +61,9 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../widget/widget-list.html"><div class="col-xs-10">About</div></a>
+                        <a href="../../widget/widget-list.view.client.html"><div class="col-xs-10">About</div></a>
                         <div class="col-xs-2">
-                            <a href="page-edit.html">
+                            <a href="page-edit.view.client.html">
                         <span class="glyphicon glyphicon-cog pull-right">
                         </span>
                             </a>
@@ -82,9 +72,9 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="../widget/widget-list.html"><div class="col-xs-10">Contact Us</div></a>
+                        <a href="../../widget/widget-list.view.client.html"><div class="col-xs-10">Contact Us</div></a>
                         <div class="col-xs-2">
-                            <a href="page-edit.html">
+                            <a href="page-edit.view.client.html">
                         <span class="glyphicon glyphicon-cog pull-right">
                         </span>
                             </a>
@@ -99,30 +89,28 @@
                    type="text"
                    class="form-control"
                    placeholder="Careers at Zomato"
-                   id="name"/>
+                   id="name"
+                    ng-model = "model.page.name"/>
 
             <label for="title">Title</label>
             <input name="title"
                    type="text"
                       class="form-control"
                       placeholder="We're hiring"
-                      id="title"/>
-
-            <a class="btn btn-default btn-block btn-danger"
-               href="page-list.html"
-               role="button">Delete</a>
+                      id="title"
+                   ng-model = "model.page.title"/>
 
         </div>
 
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
                 <div>
-                    <a href="../user/templates/profile.view.client.html">
-                        <span
-                            class="glyphicon glyphicon-user glyphicon-ok-position white"
-                            aria-hidden="true">
-                        </span>
-                    </a>
+            <a href="../../user/templates/profile.view.client.html">
+                <span
+                        class="glyphicon glyphicon-user glyphicon-ok-position white"
+                  aria-hidden="true">
+                </span>
+            </a>
                 </div>
         </div>
         </nav>
@@ -130,5 +118,4 @@
 
 
     </div><!-- /.container-fluid -->
-</body>
-</html>
+</div>

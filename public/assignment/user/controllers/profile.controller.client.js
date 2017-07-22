@@ -19,8 +19,9 @@
             $location.url("/profile/"+_user._id);
         }
 
-        function unregister(){
-
+        function unregister(userId){
+            userService.unregister(userId);
+            $location.url("/login");
         }
     }
 

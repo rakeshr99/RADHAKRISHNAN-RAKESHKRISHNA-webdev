@@ -30,11 +30,11 @@
         </li>
         <li class="list-group-item">
             <div ng-repeat = "website in model.websites" class="row">
-                <a href="../../pages/page-list.html"><div class="col-xs-5">{{website.name}}</div></a>
+                <a href="#!/user/{{model.userId}}/website/{{website._id}}/page"><div class="col-xs-5">{{website.name}}</div></a>
                 <div class="col-xs-5 col-sm-3">2017-08-06</div>
                 <div class="col-xs-2 hidden-xs">5,432,199</div>
                 <div class="col-xs-2">
-                    <a href="website-edit.view.client.html">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}">
                         <span class="glyphicon glyphicon-cog pull-right">
                         </span>
                     </a>
@@ -42,7 +42,6 @@
             </div>
         </li>
     </ul>
-    {{model.websites}}
 
 </div>
 
