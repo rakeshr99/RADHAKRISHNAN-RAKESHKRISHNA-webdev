@@ -46,6 +46,21 @@
                 controller : "editPageController",
                 controllerAs : "model"
             })
+            .when("/user/:userId/website/:wid/page/:pageId/widget", {
+                templateUrl : "widget/templates/widget-list.view.client.html",
+                controller : "widgetListController",
+                controllerAs : "model"
+            })
+            .when("/user/:userId/website/:wid/page/:pageId/widget/new", {
+                templateUrl : "widget/templates/widget-choose.view.client.html",
+                controller : "newWidgetController",
+                controllerAs : "model"
+            })
+            .when("/user/:userId/website/:wid/page/:pageId/widget/:widgetId", {
+                templateUrl : "widget/templates/widget-edit.view.client.html",
+                controller : "editWidgetController",
+                controllerAs : "model"
+            })
 
     }
 })();
