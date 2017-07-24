@@ -1,14 +1,14 @@
 <div>
 
-<nav class="navbar navbar-default navbar-fixed-top nav-collapse collapsing">
+<nav class="navbar rak-navbar-color navbar-fixed-top nav-collapse collapsing">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <a href="widget-list.view.client.html">
+        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
         <span class="glyphicon glyphicon-chevron-left
         white pull-left glyphicon-chevron-position"></span>
         </a>
         <div>
-            <a class="navbar-brand" href="../../pages/templates/page-list.view.client.html">Choose Widget</a>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">Choose Widget</a>
         </div>
 <!--            <div>
                 <a hrpage-new.view.client.htmlhtml">
@@ -25,81 +25,17 @@
     <div class="row">
         <div class="col-xs-3 visible-lg visible-md split-view-left">
             <div class="container-fluid rak-navbar-padding-top">
-                <div class="wd-widget">
+                <div ng-repeat = "widget in model.widgets" class="wd-widget">
                     <div class="wd-widget-toolbar rak-cog-align-combo">
-                        <a href="widget-heading.view.client.html">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                         </a>
                         <span class="glyphicon glyphicon-align-justify"></span>
                     </div>
-                    <h1>GIZMODO</h1>
-                </div>
-                <div class="wd-widget">
-                    <div class="wd-widget-toolbar rak-cog-align-combo">
-                        <a href="#">
-                <span class="glyphicon glyphicon-cog">
-                </span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                    <h2>‘Limited’ Nuclear Strikes Could Still Wreak Climate Havoc</h2>
-                </div>
-                <div class="wd-widget">
-                    <div class="wd-widget-toolbar rak-cog-align-combo">
-                        <a href="widget-image.view.client.html">
-                <span class="glyphicon glyphicon-cog">
-                </span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                    <img class="rak-image-full-width" src="https://www.planetdeadly.com/wp-content/uploads/priscilla-nuke-test-768x638.jpg"/>
-                </div>
-                <div class="wd-widget">
-                    <div class="wd-widget-toolbar rak-cog-align-combo">
-                        <a href="#">
-                <span class="glyphicon glyphicon-cog">
-                </span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                    <h3>
-                        <p>If you like the idea of Philips Hue’s <a href="http://gear.lifehacker.com/how-to-get-started-with-philips-hue-1764393974" target="_blank" rel="noopener">automation features</a>, but don’t particularly care about exotic and colorful lighting concepts, <a rel="nofollow" data-amazonasin="B01M1SXLD8" data-amazonsubtag="[p|1796929160[a|B01M1SXLD8[au|5727177402741770316[b|deals" onclick="window.ga('send', 'event', 'Commerce', 'deals - Here&amp;#39;s the First Discount We&amp;#39;ve Seen On Philips Hue White Bulbs', 'B01M1SXLD8');" data-amazontag="kinjadeals-20" href="https://www.amazon.com/gp/product/B01M1SXLD8?tag=kinjadeals-20&amp;ascsubtag=081daeb7cfc4c61327a025454fe3d0f17a624c5c&amp;rawdata=%5Br%7Chttp%3A%2F%2Fgizmodo.com%2F%5Bks%7Cstreamshare%5Bt%7Clink%5Bp%7C1796929160%5Ba%7CB01M1SXLD8%5Bau%7C5727177402741770316%5Bb%7Cdeals" data-amazonready="true">Prime members can get a pair of plain white Hue bulbs for $25 today</a>, about $5 less than usual. Just remember that you’ll need a <a rel="nofollow" data-amazonasin="B014H2P42K" data-amazonsubtag="[p|1796929160[a|B014H2P42K[au|5727177402741770316[b|deals" onclick="window.ga('send', 'event', 'Commerce', 'deals - Here&amp;#39;s the First Discount We&amp;#39;ve Seen On Philips Hue White Bulbs', 'B014H2P42K');" data-amazontag="kinjadeals-20" href="https://www.amazon.com/Philips-458489-Hue-Bridge-Frustration/dp/B014H2P42K/ref=sr_1_2?s=hi&amp;ie=UTF8&amp;qid=1500058519&amp;sr=1-2&amp;keywords=philips%2Bhue%2Bbridge&amp;tag=kinjadeals-20&amp;ascsubtag=374fdc0127b943fa9a2f6ebc2ed59ecba796e7b2&amp;rawdata=%5Br%7Chttp%3A%2F%2Fgizmodo.com%2F%5Bks%7Cstreamshare%5Bt%7Clink%5Bp%7C1796929160%5Ba%7CB014H2P42K%5Bau%7C5727177402741770316%5Bb%7Cdeals" data-amazonready="true">Hue Bridge</a> to control them.<br></p>
-                    </h3>
-                </div>
-                <div class="wd-widget">
-                    <div class="wd-widget-toolbar rak-cog-align-combo">
-                        <a href="#">
-                <span class="glyphicon glyphicon-cog">
-                </span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                    <h2>Soldier Richard has a magical gift for the Judges | Britain’s Got Talent 2016</h2>
-                </div>
-                <div class="wd-widget">
-                    <div class="wd-widget-toolbar rak-cog-align-combo">
-                        <a href="widget-youtube.view.client.html">
-                <span class="glyphicon glyphicon-cog">
-                </span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                    <iframe class="rak-image-full-width" width="560" height="315" src="https://www.youtube.com/embed/q5VQe7p-710" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="wd-widget">
-                    <div class="wd-widget-toolbar rak-cog-align-combo">
-                        <a href="#">
-                <span class="glyphicon glyphicon-cog">
-                </span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                    <h3>
-                        <p>Soldier Richard Jones is a magician and mind reader, with the 25-year old armed with gifts for two of Britain's GOT Talent Judges - but, there’s a twist and it involves some origami, David Beckham and a cup of tea</p>
-                    </h3>
-                </div>
+                    <div ng-include="model.widgetUrl(widget)"></div>
             </div>
+        </div>
         </div>
 
         <div class="col-lg-9 col-md-9 col-xs-12 rak-split-view-right rak-split-view-right-medium">
@@ -119,52 +55,59 @@
                     </li>-->
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-heading.view.client.html"><div class="col-xs-12">Header</div></a>
+                            <a ng-click = "model.createWidget('HEADING')"><div class="col-xs-12">Header</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-choose.view.client.html"><div class="col-xs-12">Label</div></a>
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                                <div class="col-xs-12">Label</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-choose.view.client.html"><div class="col-xs-12">HTML</div></a>
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                                <div class="col-xs-12">HTML</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-choose.view.client.html"><div class="col-xs-12">Text Input</div></a>
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                                <div class="col-xs-12">Text Input</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-choose.view.client.html"><div class="col-xs-12">Link</div></a>
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                                <div class="col-xs-12">Link</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-choose.view.client.html"><div class="col-xs-12">Button</div></a>
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                                <div class="col-xs-12">Button</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-image.view.client.html"><div class="col-xs-12">Image</div></a>
+                            <a ng-click = "model.createWidget('IMAGE')"><div class="col-xs-12">Image</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-youtube.view.client.html"><div class="col-xs-12">Youtube</div></a>
+                            <a ng-click = "model.createWidget('YOUTUBE')"><div class="col-xs-12">Youtube</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-choose.view.client.html"><div class="col-xs-12">Data Table</div></a>
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                                <div class="col-xs-12">Data Table</div></a>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <a href="widget-choose.view.client.html"><div class="col-xs-12">Repeater</div></a>
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                                <div class="col-xs-12">Repeater</div></a>
                         </div>
                     </li>
                 </ul>
@@ -172,15 +115,5 @@
 </div>
         </div></div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div>
-            <a href="../../user/templates/profile.view.client.html">
-                <span class="glyphicon glyphicon-user glyphicon-ok-position white"
-                    aria-hidden="true">
-                </span>
-            </a>
-        </div>
-    </div><!-- /.container-fluid -->
-</nav>
+    <div ng-include="'views/footerCommon.view.client.html'"></div>
 </div>

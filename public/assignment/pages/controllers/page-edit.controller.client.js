@@ -14,6 +14,7 @@
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.wid;
         function init(){
+            model.pages = pageService.findPageByWebsiteId(model.websiteId);
             model.page =  pageService.findPageById(model.pageId);
         }init();
 

@@ -12,7 +12,13 @@
         model.websiteId = $routeParams.wid;
         model.website = $routeParams.website;
         model.userId = $routeParams.userId;
+        model.userProfile = userProfile;
+
+        function userProfile(){
+            $location.url("/profile/"+userId);
+        }
         function init(){
+            model.websites =  websiteService.findWebsitesForUser(model.userId);
             model.website =  websiteService.findWebsiteById(model.websiteId);
         }init();
 

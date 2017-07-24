@@ -1,16 +1,16 @@
 <div>
 
-<nav class="navbar navbar-default navbar-fixed-top nav-collapse collapsing">
+<nav class="navbar rak-navbar-color navbar-fixed-top nav-collapse collapsing">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <a href="website-list.view.client.html">
+        <a href="#!/user/{{model.userId}}/website">
             <span
                     class="glyphicon glyphicon-chevron-left white pull-left glyphicon-chevron-position">
 
             </span>
         </a>
         <div>
-            <a class="navbar-brand" href="#">Edit Website</a>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}">Edit Website</a>
         </div>
             <div>
             <a>
@@ -33,8 +33,10 @@
                 <li class="list-group-item active">
                     <div class="row">
                         <div class="col-xs-10">Name</div>
+                        <!--                        <div class="col-xs-5 col-sm-3">Updated</div>
+                                                <div class="col-xs-2 hidden-xs">Visits</div>-->
                         <div class="col-xs-2">
-                            <a href="website-new.view.client.html">
+                            <a href="#!/user/{{model.userId}}/website/new">
                         <span class="glyphicon glyphicon-plus pull-right white">
                         </span>
                             </a>
@@ -42,61 +44,14 @@
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <div class="row">
-                        <a href="../../pages/templates/page-list.view.client.html">
-                            <div class="col-xs-10">
-                                Wikipedia
-                            </div>
-                        </a>
+                    <div ng-repeat = "website in model.websites" class="row">
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page"><div class="col-xs-10">{{website.name}}</div></a>
+                        <!--                        <div class="col-xs-5 col-sm-3">2017-08-06</div>
+                                                <div class="col-xs-2 hidden-xs">5,432,199</div>-->
                         <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right">
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <a href="../../pages/templates/page-list.view.client.html">
-                            <div class="col-xs-10">
-                                Twitter
-                            </div>
-                        </a>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right">
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <a href="../../pages/templates/page-list.view.client.html">
-                            <div class="col-xs-10">
-                                Facebook
-                            </div>
-                        </a>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right">
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <a href="../../pages/templates/page-list.view.client.html">
-                            <div class="col-xs-10">
-                                Amazon
-                            </div>
-                        </a>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right">
-                                </span>
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                        <span class="glyphicon glyphicon-cog pull-right">
+                        </span>
                             </a>
                         </div>
                     </div>
@@ -128,8 +83,8 @@
                role="button">Delete</a>
 
         </div>
-
-        <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div ng-include="'views/footerCommon.view.client.html'"></div>
+<!--        <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
                 <div>
             <a href="../../user/templates/profile.view.client.html">
@@ -141,7 +96,7 @@
             </a>
                 </div>
         </div>
-        </nav>
+        </nav>-->
     </div>
 
 

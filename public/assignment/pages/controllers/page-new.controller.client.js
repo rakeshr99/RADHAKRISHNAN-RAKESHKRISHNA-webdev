@@ -10,7 +10,10 @@
 
         model.websiteId = $routeParams.wid;
         model.page = $routeParams.page;
+        model.pageId = $routeParams.pageId;
+        model.userId=$routeParams.userId;
         function init(){
+            model.pages = pageService.findPageByWebsiteId(model.websiteId);
         }init();
 
         function createPage (website){

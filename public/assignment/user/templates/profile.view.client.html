@@ -6,7 +6,7 @@
             <a class="navbar-brand" white href="#">Profile</a>
         </div>
             <div>
-            <a href="profile.view.client.html"><span class="glyphicon glyphicon-ok pull-right
+            <a ng-click = "model.updateUser(model.user)"><span class="glyphicon glyphicon-ok pull-right
                   navbar-right glyphicon-ok-position white" aria-expanded="true"
                                                      aria-hidden="true"></span>
             </a>
@@ -66,7 +66,8 @@
        role="button">Update</a>
 </div>
 
-<nav class="navbar rak-navbar-color navbar-fixed-bottom">
+    <div ng-include="'views/footerCommon.view.client.html'"></div>
+<!--<nav class="navbar rak-navbar-color navbar-fixed-bottom">
     <div class="container-fluid">
         <div>
             <a href="profile.view.client.html"><span class="glyphicon glyphicon-user pull-right
@@ -75,6 +76,6 @@
             </a>
 
         </div>
-    </div><!-- /.container-fluid -->
-</nav>
+    </div>&lt;!&ndash; /.container-fluid &ndash;&gt;
+</nav>-->
 </div>

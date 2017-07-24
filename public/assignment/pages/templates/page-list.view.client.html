@@ -1,13 +1,13 @@
 <div>
-<nav class="navbar navbar-default navbar-fixed-top nav-collapse collapsing">
+<nav class="navbar rak-navbar-color navbar-fixed-top nav-collapse collapsing">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <a href="../../website/templates/website-list.view.client.html">
+        <a href="#!/user/{{model.userId}}/website">
         <span class="glyphicon glyphicon-chevron-left
         white pull-left glyphicon-chevron-position"></span>
         </a>
         <div>
-            <a class="navbar-brand" href="page-list.view.client.html">Pages</a>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">Pages</a>
         </div>
             <div>
                 <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
@@ -37,15 +37,5 @@
 
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div>
-            <a href="../../user/templates/profile.view.client.html">
-                <span class="glyphicon glyphicon-user glyphicon-ok-position white"
-                    aria-hidden="true">
-                </span>
-            </a>
-        </div>
-    </div><!-- /.container-fluid -->
-</nav>
+    <div ng-include="'views/footerCommon.view.client.html'"></div>
 </div>

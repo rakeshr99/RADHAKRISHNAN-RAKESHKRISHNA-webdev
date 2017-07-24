@@ -11,6 +11,7 @@
         model.userId = $routeParams.userId;
         model.website = $routeParams.website;
         function init(){
+            model.websites =  websiteService.findWebsitesForUser(model.userId);
         }init();
 
         function createWebsite (website){

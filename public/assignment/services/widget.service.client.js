@@ -3,7 +3,7 @@
         .module("WamApp")
         .service("widgetService", widgetService);
 
-    function widgetService() {
+    function widgetService($sce) {
         var widgets = [
             { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
             { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -20,6 +20,48 @@
         this.updateWidget = updateWidget;
         this.deleteWidget = deleteWidget;
         this.findWidgetsByPageId = findWidgetsByPageId;
+        this.getWidgetIdByWidgetType = getWidgetIdByWidgetType;
+        this.createWidget = createWidget;
+        this.getWidgetByWidgetId = getWidgetByWidgetId;
+        this.trust = trust;
+        this.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
+        this.widgetUrl = widgetUrl;
+
+        function widgetUrl(widget){
+            var url = 'widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.v1.html';
+            return url;
+        }
+
+        function getYouTubeEmbedUrl(linkUrl){
+            var embedUrl = "https://www.youtube.com/embed/";
+            var linkUrlParts = linkUrl.split('/');
+            embedUrl += linkUrlParts[linkUrlParts.length-1];
+            return $sce.trustAsResourceUrl(embedUrl);
+        }
+
+        function trust(html){
+            return $sce.trustAsHtml(html);
+        }
+
+        function getWidgetByWidgetId(widgetId){
+            return widgets;
+        }
+
+        function createWidget(widgetType, widget){
+            widget.widgetType = widgetType;
+            widgets.push(widget);
+            return widgets;
+        }
+
+
+        function getWidgetIdByWidgetType(widgetType){
+            //var counter=0;
+            for(var w in widgets){
+                if(widgets[w].widgetType === widgetType){
+                    return widgets[w]._id;
+                }
+            }
+        }
 
         function findWidgetsByPageId(pageId) {
             var _widgets = [];

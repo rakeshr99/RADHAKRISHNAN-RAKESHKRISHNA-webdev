@@ -25,19 +25,16 @@
         model.widgetUrl = widgetUrl;
 
         function widgetUrl(widget){
-            var url = 'widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.v1.html';
+            var url = widgetService.widgetUrl(widget);
             return url;
         }
 
         function getYouTubeEmbedUrl(linkUrl){
-            var embedUrl = "https://www.youtube.com/embed/";
-            var linkUrlParts = linkUrl.split('/');
-            embedUrl += linkUrlParts[linkUrlParts.length-1];
-            return $sce.trustAsResourceUrl(embedUrl);
+            return widgetService.getYouTubeEmbedUrl(linkUrl);
         }
 
         function trust(html){
-            return $sce.trustAsHtml(html);
+            return widgetService.trust(html);
         }
 
         function init(){

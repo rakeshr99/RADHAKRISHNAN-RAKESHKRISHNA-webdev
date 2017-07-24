@@ -1,14 +1,14 @@
 
 <div>
-<nav class="navbar navbar-default navbar-fixed-top nav-collapse collapsing ">
+<nav class="navbar rak-navbar-color navbar-fixed-top nav-collapse collapsing ">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <a href="../../pages/templates/page-list.view.client.html">
+        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
         <span class="glyphicon glyphicon-chevron-left
         white pull-left glyphicon-chevron-position"></span>
         </a>
         <div>
-            <a class="navbar-brand" href="widget-list.view.client.html">Widgets</a>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Widgets</a>
         </div>
             <div>
                 <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
@@ -49,6 +49,5 @@
         </div>-->
     </div>
     </div>
+    <div ng-include="'views/footerCommon.view.client.html'"></div>
 </div>
-
-<div ng-include="'views/footer.view.client.html'"></div>
