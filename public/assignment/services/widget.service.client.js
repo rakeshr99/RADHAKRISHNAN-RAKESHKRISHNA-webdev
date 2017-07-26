@@ -68,7 +68,17 @@
 
             for(var w in widgets){
                 if(widgets[w].pageId === pageId){
-                    _widgets.push(widgets[w]);
+                    if(widgets[w].widgetType == "HEADING"){
+                        if(!(widgets[w].text == null && widgets[w].size == null)){
+                            _widgets.push(widgets[w]);
+
+                        }
+                    }else if((widgets[w].widgetType == "IMAGE") || (widgets[w].widgetType == "YOUTUBE")){
+                        if(!(widgets[w].width == null && widgets[w].url == null)){
+                            _widgets.push(widgets[w]);
+
+                        }
+                    }
                 }
             }
             return _widgets;
@@ -89,6 +99,8 @@
                     widgets[w].widgetType = widget.widgetType;
                     widgets[w].text = widget.text;
                     widgets[w].size = widget.size;
+                    widgets[w].width = widget.width;
+                    widgets[w].url = widget.url;
                     return widgets;
                 }
             }
@@ -97,7 +109,7 @@
         function getWidgetTypeById(widgetId){
             for(var w in widgets){
                 if(widgets[w]._id === widgetId){
-                    return widgets[w];
+                    return angular.copy(widgets[w]);
                 }
             }
         }
