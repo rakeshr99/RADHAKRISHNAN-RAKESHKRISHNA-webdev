@@ -3,7 +3,7 @@
         .module("WamApp")
         .service("widgetService", widgetService);
 
-    function widgetService($sce) {
+    function widgetService($sce, $http) {
         var widgets = [
             { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
             { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -47,10 +47,16 @@
             return widgets;
         }
 
-        function createWidget(widgetType, widget){
+        function createWidget(userId, websiteId, pageId, widgetType, widget){
             widget.widgetType = widgetType;
-            widgets.push(widget);
-            return widgets;
+
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+            return $http.post(url, widget)
+                .then(function (response){
+                    return response.data;
+                })
+ /*           widgets.push(widget);
+            return widgets;*/
         }
 
 
@@ -63,8 +69,15 @@
             }
         }
 
-        function findWidgetsByPageId(pageId) {
-            var _widgets = [];
+        function findWidgetsByPageId(userId, websiteId, pageId) {
+
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+
+            return $http.get(url)
+                .then( function(response){
+                    return response.data;
+                });
+/*            var _widgets = [];
 
             for(var w in widgets){
                 if(widgets[w].pageId === pageId){
@@ -81,20 +94,33 @@
                     }
                 }
             }
-            return _widgets;
+            return _widgets;*/
         }
 
-        function deleteWidget(widgetId){
-            var widget = widgets.find(function (widget){
+        function deleteWidget(userId, websiteId, pageId, widgetId){
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+
+            return $http.delete(url)
+                .then(function (response){
+                    return response.data;
+                });
+/*            var widget = widgets.find(function (widget){
                 return widget._id === widgetId;
             });
             var index = widgets.indexOf(widget);
             widgets.splice(index, 1);
-            return widgets;
+            return widgets;*/
         }
 
-        function updateWidget(widgetId, widget){
-            for(var w in widgets){
+        function updateWidget(userId, websiteId, pageId, widgetId, widget){
+
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+
+            return $http.put(url, widget)
+                .then(function (response){
+                    return response.data;
+                });
+/*            for(var w in widgets){
                 if(widgets[w]._id == widgetId){
                     widgets[w].widgetType = widget.widgetType;
                     widgets[w].text = widget.text;
@@ -103,15 +129,21 @@
                     widgets[w].url = widget.url;
                     return widgets;
                 }
-            }
+            }*/
         }
 
-        function getWidgetTypeById(widgetId){
-            for(var w in widgets){
+        function getWidgetTypeById(userId, websiteId, pageId, widgetId){
+
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+            return $http.get(url)
+                .then( function (response){
+                    return response.data;
+                });
+/*            for(var w in widgets){
                 if(widgets[w]._id === widgetId){
                     return angular.copy(widgets[w]);
                 }
-            }
+            }*/
         }
 
 

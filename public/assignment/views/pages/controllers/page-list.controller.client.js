@@ -9,9 +9,13 @@
 
         model.websiteId = $routeParams.wid;
         function init() {
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
             model.userId=$routeParams.userId;
             model.websiteId=$routeParams.wid;
+            pageService
+                .findPageByWebsiteId(model.websiteId, model.userId)
+                .then( function (pages){
+                    model.pages = pages;
+                });
         }
 
         init();

@@ -13,11 +13,19 @@
         model.pageId = $routeParams.pageId;
         model.userId=$routeParams.userId;
         function init(){
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
+           pageService
+               .findPageByWebsiteId(model.websiteId)
+               .then( function (pages){
+                   model.pages = pages;
+               })
         }init();
 
         function createPage (website){
-            model.pages = pageService.createPage(model.websiteId, model.page);
+            pageService
+                .createPage(model.websiteId, model.page, model.userId)
+                .then( function (pages){
+                    model.pages = pages;
+                });
             $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
         }
     }

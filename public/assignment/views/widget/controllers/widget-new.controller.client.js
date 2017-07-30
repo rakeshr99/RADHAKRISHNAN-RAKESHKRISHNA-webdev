@@ -32,14 +32,18 @@
             var widget ={};
             widget.pageId = model.pageId;
             widget._id = (new Date()).getTime() + "";
-            //var widgetId = widgetService.getWidgetIdByWidgetType(widgetType);
-            model.widgets = widgetService.createWidget(widgetType, widget);
-            //model.widgets = widgetService.getWidgetByWidgetId(widgetId);
+            widgetService.createWidget(model.userId, model.websiteId, model.pageId, widgetType, widget)
+                .then(function(widgets){
+                    model.widgets = widgets;
+                });
             $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+widget._id);
         }
 
         function init(){
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+            widgetService.findWidgetsByPageId(model.pageId)
+                .then(function(widgets){
+                    model.widgets = widgets;
+                })
         }init();
     }
 

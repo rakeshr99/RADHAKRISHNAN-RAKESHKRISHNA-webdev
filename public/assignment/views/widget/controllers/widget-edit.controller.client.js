@@ -19,9 +19,10 @@
             var widget ={};
             widget.pageId = model.pageId;
             widget._id = (new Date()).getTime() + "";
-            //var widgetId = widgetService.getWidgetIdByWidgetType(widgetType);
-            model.widgets = widgetService.createWidget(widgetType, widget);
-            //model.widgets = widgetService.getWidgetByWidgetId(widgetId);
+            widgetService.createWidget(model.userId, model.websiteId, model.pageId,widgetType, widget)
+                .then(function (widgets){
+                    model.widgets = widgets;
+                });
             $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+widget._id);
         }
 
@@ -39,25 +40,40 @@
         }
 
         function deleteWidget(widgetId){
-            model.widgets = widgetService.deleteWidget(widgetId);
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+            widgetService
+                .deleteWidget(model.userId, model.websiteId, model.pageId, widgetId)
+                .then(function (widgets){
+                    model.widgets = widgets;
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+                });
+
         }
 
         function updateWidget(widget){
-            model.widgets = widgetService.updateWidget(model.widgetId,widget);
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+            widgetService
+                .updateWidget(model.userId, model.websiteId, model.pageId,model.widgetId,widget)
+                .then(function(widgets){
+                    model.widgets = widgets;
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+                });
         }
         function init() {
             model.userId=$routeParams.userId;
             model.websiteId=$routeParams.wid;
             model.pageId = $routeParams.pageId;
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
-            model.widget = widgetService.getWidgetTypeById(model.widgetId);
-            model.widgetType = model.widget.widgetType;
-            model.size = model.widget.size;
-            model.text = model.widget.text;
-            model.width = model.widget.width;
-            model.url = model.widget.url;
+            widgetService.findWidgetsByPageId(model.userId, model.websiteId, model.pageId)
+                .then(function (widgets){
+                    model.widgets = widgets;
+                });
+            widgetService.getWidgetTypeById(model.userId, model.websiteId, model.pageId, model.widgetId)
+                .then(function (widget){
+                    model.widget = widget;
+                    model.widgetType = model.widget.widgetType;
+                    model.size = model.widget.size;
+                    model.text = model.widget.text;
+                    model.width = model.widget.width;
+                    model.url = model.widget.url;
+                });
         }
 
         init();

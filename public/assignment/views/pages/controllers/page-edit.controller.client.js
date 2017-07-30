@@ -14,18 +14,27 @@
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.wid;
         function init(){
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
-            model.page =  pageService.findPageById(model.pageId);
+            //model.pages = pageService.findPageByWebsiteId(model.websiteId);
+            pageService.findPageById(model.userId, model.websiteId, model.pageId)
+                .then( function (page){
+                    model.page = page;
+                })
         }init();
 
-        function updatePage(pageId, page){
-            model.pages = pageService.updatePage(model.pageId, model.page);
+        function updatePage(page){
+            pageService
+                .updatePage(model.userId, model.websiteId, model.pageId, page)
+                .then( function (pages){
+                    model.pages = pages;
+                });
             $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
         }
 
         function deletePage(pageId){
-            pageService.deletePage(pageId);
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+            pageService.deletePage(model.userId, model.websiteId,pageId)
+                .then( function (response){
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+                });
         }
 
     }
