@@ -3,7 +3,7 @@
         .module("WamApp")
         .service("websiteService", websiteService);
 
-    function websiteService(){
+    function websiteService($http){
         var websites = [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
             { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -20,49 +20,62 @@
         this.updateWebsite = updateWebsite;
         this.deleteWebsite = deleteWebsite;
 
-        function deleteWebsite(websiteId){
-            var website = websites.find(function (website){
+        function deleteWebsite(websiteId, userId){
+            var url = "/api/user/"+userId+ "/website/"+websiteId;
+
+            return $http.delete(url);
+ /*           var website = websites.find(function (website){
                 return website._id === websiteId;
             });
             var index = websites.indexOf(website);
-            websites.splice(index, 1);
+            websites.splice(index, 1);*/
         }
 
-        function updateWebsite(websiteId, website){
-            for(var w in websites){
+        function updateWebsite(websiteId, website ,userId ){
+
+            var url = "/api/user/"+userId+"/website/"+websiteId;
+
+            return $http.put(url, website);
+/*            for(var w in websites){
                 if(websites[w]._id == websiteId){
                     websites[w].description = website.description;
                     return websites;
                 }
-            }
+            }*/
         }
 
-        function findWebsiteById(websiteId){
-            for(var w in websites){
+        function findWebsiteById(websiteId, userId){
+
+            var url = "/api/user/"+userId+"/website/"+websiteId;
+            //return $http.get(url);
+
+            return $http.get(url)
+                .then(function (response){
+                    return response.data;
+                });
+/*            for(var w in websites){
                 if(websites[w]._id === websiteId){
                     return angular.copy(websites[w]);
                 }
             }
-            return null;
+            return null;*/
         }
 
         function createWebsite(userId, website){
-            website._id = (new Date()).getTime() + "";
-            website.developerId = userId;
-            websites.push(website);
 
-            return websites;
+            var url = "/api/user/"+userId+"/website";
+
+            return $http.post(url, website);
         }
 
         function findWebsitesForUser(userId){
-            var sites = [];
 
-            for(var w in websites){
-                if(websites[w].developerId === userId){
-                    sites.push(websites[w]);
-                }
-            }
-            return sites;
+            var url = "/api/user/"+userId+"/website";
+
+            return $http.get(url)
+                .then(function (response){
+                   return response.data;
+                });
 
         }
     }

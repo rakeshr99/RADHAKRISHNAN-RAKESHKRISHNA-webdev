@@ -16,12 +16,16 @@
                         model.errorMessage = "Invalid login credentials, the username or password you entered is incorrect";
                         return;
                     }
-                    user = userService.findUserByNameAndPassword(user.username, user.password);
-                    if(user === null){
-                        model.errorMessage = "Invalid login credentials, the username or password you entered is incorrect";
-                    }else{
-                            $location.url("profile/"+user._id);
-                    }
+
+                    userService.findUserByNameAndPassword(user.username, user.password)
+                        .then(function (response){
+                            user = response.data;
+                            if(user === "0"){
+                                model.errorMessage = "Invalid login credentials, the username or password you entered is incorrect";
+                            }else{
+                                $location.url("profile/"+user._id);
+                            }
+                        })
 
         }
     }

@@ -28,7 +28,7 @@
         this.widgetUrl = widgetUrl;
 
         function widgetUrl(widget){
-            var url = 'widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.v1.html';
+            var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.v1.html';
             return url;
         }
 

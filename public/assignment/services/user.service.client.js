@@ -3,7 +3,7 @@
         .module("WamApp")
         .factory("userService", userService);// two ways of creating this
 
-    function userService(){
+    function userService($http){
         var users = [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
             {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -22,52 +22,37 @@
         return api;
 
         function unregister(userId){
-            var user = users.find(function (user){
-                return user._id === userId;
-            });
-            var index = users.indexOf(user);
-            users.splice(index, 1);
+            var url = "/api/user/" + userId;
+
+            return $http.delete(url);
         }
 
         function updateUser(userId, user){
-            for(var u in users){
-                if(users[u]._id === userId){
-                    users[u] = user;
-                    return users[u];
-                }
-            }return null;
+
+            var url = "/api/user/" + userId;
+            return $http.put(url, user);
         }
         function findUserByusername(username){
-            for(var u in users){
-                if(users[u].username === username){
-                    return users[u];
-                }else{
-                    return null;
-                }
-            }
+
+            var  url = "/api/user?username="+ username;
+
+            return $http.get(url);
         }
 
         function registerUser(user){
-            user._id = (new Date()).getTime() + "";
-            users.push(user);
-            return user;
+            var url = "/api/user";
+
+            return $http.post(url, user);
         }
 
         function findUserById(userId){
-            for(var u in users){
-                if(users[u]._id === userId){
-                    return users[u];
-                }
-            }return null;
+            return $http.get("/api/user/" + userId);
         }
 
         function findUserByNameAndPassword(username, password){
-                for(u in users){
-                    var _user = users[u];
-                    if(_user.username === username && _user.password === password){
-                        return _user;
-                    }
-                }return null;
+
+            var url = "/api/user?username="+username+"&password="+ password;
+            return $http.get(url);
         }
     }
 })();

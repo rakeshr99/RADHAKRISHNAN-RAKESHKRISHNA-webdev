@@ -15,7 +15,12 @@
         }init();
 
         function createWebsite (website){
-            model.websites = websiteService.createWebsite(model.userId, model.website);
+            model.websites =
+                websiteService.createWebsite(model.userId, model.website)
+                    .then(function (response){
+                        return response.data;
+                    });
+
             $location.url("/user/"+model.userId+"/website");
         }
     }
