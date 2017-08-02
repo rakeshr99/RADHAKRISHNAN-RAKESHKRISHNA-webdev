@@ -16,21 +16,20 @@
 
         function userProfile(){
             $location.url("/profile/"+userId);
-        }
-        function init(){
+        }        function init(){
             //model.websites =  websiteService.findWebsitesForUser(model.userId);
-                websiteService
-                    .findWebsiteById(model.websiteId, model.userId)
-                    .then(function (website){
-                        model.website = website;
-                    })
-/*
+            websiteService
+                .findWebsiteById(model.websiteId, model.userId)
+                .then(function (website){
+                    model.website = website;
+                });
             websiteService
                 .findWebsitesForUser(model.userId)
-                .then(function (websites){
+                .then( function (websites){
                     model.websites = websites;
-                });*/
+                });
         }init();
+
 
         function updateWebsite(website){
             model.websites =

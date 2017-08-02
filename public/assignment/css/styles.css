@@ -113,3 +113,11 @@ wd-widget{
 .rak-color-hyperlink{
     color:#23527c;
 }
+
+.rak-list-without-bullets{
+    list-style-type: none;
+}
+
+ul{
+    list-style-type:none;
+}

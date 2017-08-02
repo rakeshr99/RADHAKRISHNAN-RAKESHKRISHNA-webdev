@@ -15,7 +15,7 @@
                 .findWebsitesForUser(model.userId)
                 .then( function (websites){
                     model.websites = websites;
-                })
+                });
         }init();
 
         function createWebsite (website){

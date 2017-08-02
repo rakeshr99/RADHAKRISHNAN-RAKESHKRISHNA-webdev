@@ -18,7 +18,13 @@
             pageService.findPageById(model.userId, model.websiteId, model.pageId)
                 .then( function (page){
                     model.page = page;
-                })
+                });
+
+            pageService
+                .findPageByWebsiteId(model.websiteId)
+                .then( function (pages){
+                    model.pages = pages;
+                });
         }init();
 
         function updatePage(page){

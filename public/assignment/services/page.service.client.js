@@ -23,11 +23,6 @@
                 .then(function (response){
                     return response.data;
                 })
-/*            var page = pages.find(function (page){
-                return page._id === pageId;
-            });
-            var index = pages.indexOf(page);
-            pages.splice(index, 1);*/
         }
 
         function updatePage(userId, websiteId,pageId, page){
@@ -36,12 +31,6 @@
                 .then(function (response){
                     return response.data;
                 });
-/*            for(var p in pages){
-                if(pages[p]._id == pageId){
-                    pages[p].description = page.description;
-                    return pages;
-                }
-            }*/
         }
 
         function findPageById(userId, websiteId, pageId){
@@ -51,12 +40,6 @@
                 .then( function(response){
                     return response.data;
                 });
-/*            for(var p in pages){
-                if(pages[p]._id === pageId){
-                    return angular.copy(pages[p]);
-                }
-            }
-            return null;*/
         }
 
         function createPage(websiteId, page, userId){
@@ -66,12 +49,6 @@
                 .then (function (response){
                     return response.data;
                 });
-
-/*            page._id = (new Date()).getTime() + "";
-            page.websiteId = websiteId;
-            pages.push(page);
-
-            return pages;*/
         }
 
         function findPageByWebsiteId(websiteId, userId) {
@@ -81,14 +58,6 @@
                 .then(function (response){
                     return response.data;
                 })
- /*           var _pages = [];
-
-            for(var p in pages){
-                if(pages[p].websiteId === websiteId){
-                    _pages.push(pages[p]);
-                }
-            }
-            return _pages;*/
         }
     }
 })();

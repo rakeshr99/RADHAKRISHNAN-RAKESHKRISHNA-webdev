@@ -17,6 +17,55 @@ app.post("/api/user/:userId/website/:websiteId/page/:pageId/widget", createWidge
 app.get("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", getWidgetTypeById);
 app.delete("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", deleteWidget);
 app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", updateWidget);
+app.put("/api/directives/widgets", updateWidgets);
+
+function updateWidgets(req, res){
+    var initial = req.query.initial;
+    var final = req.query.final;
+    widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
+    res.sendStatus(200);
+    return;
+}
+
+
+var multer = require('multer'); // npm install multer --save
+var upload = multer({ dest: __dirname+'/../public/uploads' });
+
+app.post ("/api/upload", upload.single('myFile'), uploadImage);
+
+function uploadImage(req, res) {
+
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    widget = getWidgetById(widgetId);
+    widget.url = '/uploads/'+filename;
+
+    var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+
+    res.redirect(callbackUrl);
+}
+
+function getWidgetById(widgetId){
+    for(var w in widgets){
+        if(widgets[w]._id === widgetId){
+            return widgets[w];
+        }
+    }
+    return null;
+}
 
 function updateWidget(req, res){
     var widgetId = req.params.widgetId;
@@ -34,7 +83,7 @@ function updateWidget(req, res){
     }
 }
 
-function deleteWidget(req, res){
+function    deleteWidget(req, res){
     var widgetId = req.params.widgetId;
     var widget = widgets.find(function (widget){
         return widget._id === widgetId;
@@ -79,6 +128,8 @@ function findWidgetsByPageId(req, res){
                     _widgets.push(widgets[w]);
 
                 }
+            }else if(widgets[w].widgetType == "HTML"){
+                _widgets.push(widgets[w]);
             }
         }
     }

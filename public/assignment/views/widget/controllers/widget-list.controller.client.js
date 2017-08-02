@@ -9,6 +9,11 @@
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.widgetUrl = widgetUrl;
+        model.sort = sort;
+
+        function sort(initial, final){
+            console.log(initial+"    "+ final)
+        }
 
         function widgetUrl(widget){
             var url = widgetService.widgetUrl(widget);

@@ -63,15 +63,25 @@
                    ng-model = "model.widget.width"
                    value = "{{model.width}}"/>
 
-            <label>Upload</label>
-            <div class="fileinput fileinput-new" data-provides="fileinput form-control">
-                <span class="btn btn-default btn-file btn-block rak-upload-margin"><span></span><input type="file" /></span>
-                <!--<span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>-->
-            </div>
+            <a href="#!/widget/:widgetId/search">
+                Search
+            </a>
 
-            <a class="btn btn-default btn-block btn-primary"
+            <label>Upload</label>
+            <form action="/api/upload"   method="post" enctype="multipart/form-data">
+                <input  name="myFile"    type="file" class="form-control"/>
+                <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+                <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+                <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+                <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+                <input  name="widgetId"  value="{{model.widgetId}}"   style="display: none"/>
+                <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+            </form>
+
+
+<!--            <a class="btn btn-default btn-block btn-primary"
                ng-click = "model.updateWidget(model.widget)"
-               role="button">Upload</a>
+               role="button">Upload</a>-->
 
             <a class="btn btn-default btn-block btn-danger"
                ng-click = "model.deleteWidget(model.widget._id)"

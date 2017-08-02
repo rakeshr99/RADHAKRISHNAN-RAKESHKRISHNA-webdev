@@ -24,11 +24,6 @@
             var url = "/api/user/"+userId+ "/website/"+websiteId;
 
             return $http.delete(url);
- /*           var website = websites.find(function (website){
-                return website._id === websiteId;
-            });
-            var index = websites.indexOf(website);
-            websites.splice(index, 1);*/
         }
 
         function updateWebsite(websiteId, website ,userId ){
@@ -36,12 +31,6 @@
             var url = "/api/user/"+userId+"/website/"+websiteId;
 
             return $http.put(url, website);
-/*            for(var w in websites){
-                if(websites[w]._id == websiteId){
-                    websites[w].description = website.description;
-                    return websites;
-                }
-            }*/
         }
 
         function findWebsiteById(websiteId, userId){
@@ -53,12 +42,6 @@
                 .then(function (response){
                     return response.data;
                 });
-/*            for(var w in websites){
-                if(websites[w]._id === websiteId){
-                    return angular.copy(websites[w]);
-                }
-            }
-            return null;*/
         }
 
         function createWebsite(userId, website){
