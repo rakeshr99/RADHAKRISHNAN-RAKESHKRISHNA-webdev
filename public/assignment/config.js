@@ -13,9 +13,9 @@
         $httpProvider.defaults.headers.post['Access-Control-Max-Age'] = '1728000';
         $routeProvider
             .when("/", {
-                templateUrl:"views/home.view.client.html",})
-/*                controller : "homeController",
-                controllerAs : "model"})*/
+                templateUrl:"views/home/home.view.client.html",
+                controller : "homeController",
+                controllerAs : "model"})
             .when("/login", {
                 templateUrl:"views/user/templates/login.view.client.html",
                 controller : "loginController",

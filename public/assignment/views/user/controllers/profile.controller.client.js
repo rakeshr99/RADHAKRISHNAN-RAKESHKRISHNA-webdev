@@ -25,7 +25,7 @@
             userService.updateUser(userId, user)
                 .then(function (response){
                     _user = response.data;
-                    $location.url("/profile/"+_user._id);
+                    $location.url("/profile/"+userId);
                 })
         }
 

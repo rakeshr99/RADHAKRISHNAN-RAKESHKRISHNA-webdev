@@ -1,5 +1,3 @@
-<div>
-
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -9,13 +7,13 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#!/login">Login</a></li>
-                <li><a href="user/templates/register.view.client.html">Register</a></li>
-                <li><a href="user/templates/profile.view.client.html">Profile</a></li>
-                <li><a href="user/templates/login.view.client.html">Logout</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a ng-show="!currentUser" href="#!/login">Login</a></li>
+                <li><a ng-show="!currentUser" href="#!/register">Register</a></li>
+                <li><a ng-show="currentUser" href="#!/profile/{{currentUser._id}}">Profile</a></li>
+                <li><a ng-show="currentUser" href="#!/logout">Logout</a></li>
+                <li><a ng-show="currentUser.isAdmin" href="#!/admin">Admin</a></li>
+                <li><a href="#!/about">About</a></li>
+                <li><a href="#!/contact">Contact</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="tru
                     e" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -595,15 +593,3 @@
 
 
 </div> <!-- /container -->
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-<script src="../../assets/js/docs.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="YelpApp">
+<head>
+    <link href="../../assignment/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="../../vendor/angular/angular.js"></script>
+    <script src="../../vendor/angular/angular-route.js"></script>
+    <script src="../yelp/app.js"></script>
+    <script src="../yelp/config.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container-fluid" ng-controller="searchController as model">
+        <h1>Yelp Fusion API</h1>
+        <h2>Search by restaurant name</h2>
+        <input class="form-control" placeholder="Shake Shack" ng-model="searchInput">
+        <button ng-click="model.searchRestaurantByTitle(searchInput)" class="btn btn-primary btn-block">Search</button>
+    </div>
+
+</body>
+</html>
