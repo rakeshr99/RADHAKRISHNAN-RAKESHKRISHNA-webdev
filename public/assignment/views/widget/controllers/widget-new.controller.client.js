@@ -31,12 +31,13 @@
         function createWidget(widgetType){
             var widget ={};
             widget.pageId = model.pageId;
-            widget._id = (new Date()).getTime() + "";
+            //widget._id = (new Date()).getTime() + "";
             widgetService.createWidget(model.userId, model.websiteId, model.pageId, widgetType, widget)
-                .then(function(widgets){
-                    model.widgets = widgets;
+                .then(function(widget){
+                    //model.widgets = widgets;
+                    model.widget = widget;
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+model.widget._id);
                 });
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+widget._id);
         }
 
         function init(){

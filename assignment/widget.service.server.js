@@ -1,4 +1,5 @@
 var app = require("../express");
+var widgetModel = require("../assignment/models/widget/widget.model.server");
 
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -22,9 +23,17 @@ app.put("/api/directives/widgets", updateWidgets);
 function updateWidgets(req, res){
     var initial = req.query.initial;
     var final = req.query.final;
-    widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
+    var pageId = req.params.pageId;
+
+    widgetModel
+        .reorderWidget(pageId, initial, final)
+        .then(function (status){
+            res.sendStatus(200);
+            return;
+        })
+/*    widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
     res.sendStatus(200);
-    return;
+    return;*/
 }
 
 
@@ -59,18 +68,38 @@ function uploadImage(req, res) {
 }
 
 function getWidgetById(widgetId){
-    for(var w in widgets){
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget){
+            res.json(widget);
+            return;
+        });
+/*    for(var w in widgets){
         if(widgets[w]._id === widgetId){
             return widgets[w];
         }
     }
-    return null;
+    return null;*/
+    return;
 }
 
 function updateWidget(req, res){
     var widgetId = req.params.widgetId;
     var widget = req.body;
-    for(var w in widgets){
+
+    widgetModel
+        .updateWidget(widgetId,widget)
+        .then(function (status){
+            if(status){
+                res.json(status);
+                return;
+            }else{
+                res.send(404);
+                return;
+            }
+        });
+
+/*    for(var w in widgets){
         if(widgets[w]._id == widgetId){
             widgets[w].widgetType = widget.widgetType;
             widgets[w].text = widget.text;
@@ -80,34 +109,67 @@ function updateWidget(req, res){
             res.send(widgets);
             return;
         }
-    }
+    }*/
+    return;
 }
 
 function    deleteWidget(req, res){
     var widgetId = req.params.widgetId;
-    var widget = widgets.find(function (widget){
+
+    widgetModel
+        .deleteWidget(widgetId)
+        .then(function (status){
+           if(status){
+               res.json(status);
+               return;
+           } else{
+               res.send(404);
+               return;
+           }
+        });
+
+/*    var widget = widgets.find(function (widget){
         return widget._id === widgetId;
     });
     var index = widgets.indexOf(widget);
     widgets.splice(index, 1);
     res.send(widgets);
+    return;*/
     return;
 }
 
 function getWidgetTypeById(req, res){
     var widgetId = req.params.widgetId;
-    for(var w in widgets){
+
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget){
+           res.json(widget);
+           return;
+        });
+
+/*    for(var w in widgets){
         if(widgets[w]._id === widgetId){
             res.send(widgets[w]);
             return;
         }
-    }
+    }*/
+    return;
 }
 
 function createWidget(req, res){
     var widget = req.body;
-    widgets.push(widget);
+    var pageId = req.params.pageId;
+
+    widgetModel
+        .createWidget(pageId,widget)
+        .then(function(widget){
+           res.json(widget);
+           return;
+        });
+/*    widgets.push(widget);
     res.send(widgets);
+    return;*/
     return;
 }
 
@@ -116,23 +178,29 @@ function findWidgetsByPageId(req, res){
     var pageId = req.params.pageId;
     var _widgets = [];
 
-    for(var w in widgets){
-        if(widgets[w].pageId === pageId){
-            if(widgets[w].widgetType == "HEADING"){
-                if(!(widgets[w].text == null && widgets[w].size == null)){
-                    _widgets.push(widgets[w]);
+    widgetModel
+        .findAllWidgetsForPage(pageId)
+        .then(function (widgets){
+            //TO BE DONE : Implement the case of an empty widget with just the widget id
+            for(var w in widgets){
+                if(widgets[w]._page.toHexString() === pageId){
+                    if(widgets[w].widgetType == "HEADING"){
+                        if(!(widgets[w].text == null && widgets[w].size == null)){
+                            _widgets.push(widgets[w]);
 
-                }
-            }else if((widgets[w].widgetType == "IMAGE") || (widgets[w].widgetType == "YOUTUBE")){
-                if(!(widgets[w].width == null && widgets[w].url == null)){
-                    _widgets.push(widgets[w]);
+                        }
+                    }else if((widgets[w].widgetType == "IMAGE") || (widgets[w].widgetType == "YOUTUBE")){
+                        if(!(widgets[w].width == null && widgets[w].url == null)){
+                            _widgets.push(widgets[w]);
 
+                        }
+                    }else if(widgets[w].widgetType == "HTML"){
+                        _widgets.push(widgets[w]);
+                    }
                 }
-            }else if(widgets[w].widgetType == "HTML"){
-                _widgets.push(widgets[w]);
             }
-        }
-    }
-    res.send(_widgets);
+            res.json(_widgets);
+            return;
+        });
     return;
 }

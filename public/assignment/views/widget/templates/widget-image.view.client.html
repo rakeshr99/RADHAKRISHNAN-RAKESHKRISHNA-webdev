@@ -63,10 +63,6 @@
                    ng-model = "model.widget.width"
                    value = "{{model.width}}"/>
 
-            <a href="#!/widget/:widgetId/search">
-                Search
-            </a>
-
             <label>Upload</label>
             <form action="/api/upload"   method="post" enctype="multipart/form-data">
                 <input  name="myFile"    type="file" class="form-control"/>
@@ -78,10 +74,10 @@
                 <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
             </form>
 
-
-<!--            <a class="btn btn-default btn-block btn-primary"
-               ng-click = "model.updateWidget(model.widget)"
-               role="button">Upload</a>-->
+            <button ng-click = "model.flickrSearch(model.widgetId)"
+                    class="btn btn-info btn-block">
+                Search
+            </button>
 
             <a class="btn btn-default btn-block btn-danger"
                ng-click = "model.deleteWidget(model.widget._id)"

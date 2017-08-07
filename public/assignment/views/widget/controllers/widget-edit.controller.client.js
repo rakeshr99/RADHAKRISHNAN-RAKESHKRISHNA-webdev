@@ -14,16 +14,18 @@
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.widgetUrl = widgetUrl;
         model.createWidget = createWidget;
+        model.flickrSearch = flickrSearch;
 
         function createWidget(widgetType){
             var widget ={};
             widget.pageId = model.pageId;
-            widget._id = (new Date()).getTime() + "";
+            //widget._id = (new Date()).getTime() + "";
             widgetService.createWidget(model.userId, model.websiteId, model.pageId,widgetType, widget)
-                .then(function (widgets){
-                    model.widgets = widgets;
+                .then(function (widget){
+                    model.widget = widget;
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+model.widget._id);
                 });
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+widget._id);
+            //$location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+widget._id);
         }
 
         function widgetUrl(widget){
@@ -49,10 +51,15 @@
 
         }
 
+        function flickrSearch(widgetId){
+            $location.url("/user/"+model.userId+"/website/"
+                +model.websiteId+"/page/"+model.pageId+"/widget/"+model.widgetId+"/search");
+        }
+
         function updateWidget(widget){
             widgetService
                 .updateWidget(model.userId, model.websiteId, model.pageId,model.widgetId,widget)
-                .then(function(widgets){
+                    .then(function(widgets){
                     model.widgets = widgets;
                     $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
                 });
@@ -61,6 +68,7 @@
             model.userId=$routeParams.userId;
             model.websiteId=$routeParams.wid;
             model.pageId = $routeParams.pageId;
+            model.widgetId = $routeParams.widgetId;
             widgetService.findWidgetsByPageId(model.userId, model.websiteId, model.pageId)
                 .then(function (widgets){
                     model.widgets = widgets;
