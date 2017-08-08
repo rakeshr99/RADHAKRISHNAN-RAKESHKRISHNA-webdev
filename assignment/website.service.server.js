@@ -86,6 +86,8 @@ function createWebsite(req, res){
         .then(function (website){
            res.json(website);
            return;
+        }, function (err){
+            res.statusCode(404).send(err);
         });
 /*    website._id = (new Date()).getTime() + "";
     website.developerId = userId;

@@ -59,20 +59,44 @@ function uploadImage(req, res) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    widget = getWidgetById(widgetId);
-    widget.url = '/uploads/'+filename;
+    getWidgetByIdForUpload(widgetId, filename, pageId)
+        .then(function (wid){
+            widget = wid;
+            //widget.url = '/uploads/'+filename;
+            var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
 
-    var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+            res.redirect(callbackUrl);
+        });
 
-    res.redirect(callbackUrl);
+}
+
+function getWidgetByIdForUpload(widgetId, filename, pageId){
+    return widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget){
+            widget.url = '/uploads/'+filename;
+            widgetModel
+                .createWidget(pageId,widget)
+                .then(function(widget){
+                    res.json(widget);
+                    return;
+                }, function (err){
+                    res.statusCode(404).send(err);
+                });
+            return;
+        }, function(err){
+            response.sendStatus(404).send(err);
+        });
 }
 
 function getWidgetById(widgetId){
-    widgetModel
+    return widgetModel
         .findWidgetById(widgetId)
         .then(function (widget){
             res.json(widget);
             return;
+        }, function(err){
+            response.sendStatus(404).send(err);
         });
 /*    for(var w in widgets){
         if(widgets[w]._id === widgetId){
@@ -80,7 +104,7 @@ function getWidgetById(widgetId){
         }
     }
     return null;*/
-    return;
+    //return;
 }
 
 function updateWidget(req, res){
@@ -166,6 +190,8 @@ function createWidget(req, res){
         .then(function(widget){
            res.json(widget);
            return;
+        }, function (err){
+            res.statusCode(404).send(err);
         });
 /*    widgets.push(widget);
     res.send(widgets);

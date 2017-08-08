@@ -85,6 +85,8 @@ function createPage(req, res){
         .then(function (page){
             res.json(page);
             return;
+        }, function (err){
+            res.statusCode(404).send(err);
         });
 /*    page._id = (new Date()).getTime() + "";
     page.websiteId = websiteId;
