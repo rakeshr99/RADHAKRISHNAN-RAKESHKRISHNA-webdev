@@ -183,21 +183,19 @@ function findWidgetsByPageId(req, res){
         .then(function (widgets){
             //TO BE DONE : Implement the case of an empty widget with just the widget id
             for(var w in widgets){
-                if(widgets[w]._page.toHexString() === pageId){
+                //if(widgets[w]._page.toHexString() === pageId){
                     if(widgets[w].widgetType == "HEADING"){
                         if(!(widgets[w].text == null && widgets[w].size == null)){
                             _widgets.push(widgets[w]);
-
                         }
                     }else if((widgets[w].widgetType == "IMAGE") || (widgets[w].widgetType == "YOUTUBE")){
                         if(!(widgets[w].width == null && widgets[w].url == null)){
                             _widgets.push(widgets[w]);
-
                         }
                     }else if(widgets[w].widgetType == "HTML"){
                         _widgets.push(widgets[w]);
                     }
-                }
+                //}
             }
             res.json(_widgets);
             return;
