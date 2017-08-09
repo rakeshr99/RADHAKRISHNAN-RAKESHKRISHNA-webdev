@@ -1,4 +1,4 @@
 (function (){
-    angular.module("WamApp",["ngRoute","wbdvDirectives"]);
+    angular.module("WamApp",["ngRoute","wbdvDirectives","textAngular"]);
 })();
 

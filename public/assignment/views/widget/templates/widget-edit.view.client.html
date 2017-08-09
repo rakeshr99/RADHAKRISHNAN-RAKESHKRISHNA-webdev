@@ -6,8 +6,8 @@
     <div ng-switch-when = "IMAGE" >
         <div ng-include = "'views/widget/templates/widget-image.view.client.html'"></div>
     </div>
-    <div ng-switch-when = "HTML" ng-bind-html="model.trust(widget.text)">
-        {{widget.url}}
+    <div ng-switch-when = "HTML">
+        <div ng-include = "'views/widget/templates/widget-html-edit.view.client.html'"></div>
     </div>
     <div ng-switch-when = "YOUTUBE">
         <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
