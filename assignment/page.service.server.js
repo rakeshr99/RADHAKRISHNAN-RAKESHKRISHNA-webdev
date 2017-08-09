@@ -15,9 +15,10 @@ app.put("/api/user/:userId/website/:websiteId/page/:pageId", updatePage);
 
 function deletePage(req, res){
     var pageId = req.params.pageId;
+    var websiteId = req.params.websiteId;
 
     pageModel
-        .deletePage(pageId)
+        .deletePage(websiteId, pageId)
         .then(function (status){
             if(status){
                 res.json(status);

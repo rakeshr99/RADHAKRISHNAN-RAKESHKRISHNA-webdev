@@ -9,17 +9,28 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser =updateUser ;
 userModel.deleteUser = deleteUser;
-//userModel.addWebsite = addWebsite;
+userModel.addWebsite = addWebsite;
+userModel.removeWebsite = removeWebsite;
 
 module.exports = userModel;
 
-/*function addWebsite(developerId,websiteId){
-    return userModel.findUserById(developerId)
+function removeWebsite(userId, websiteId){
+    return userModel
+        .findById(userId)
         .then(function (user){
-        user.websites.push(webisteId);
+            var index = user.websites.indexOf(websiteId);
+            user.websites.splice(index, 1);
+            return user.save();
+    })
+}
+
+function addWebsite(userId,websiteId){
+    return userModel.findUserById(userId)
+        .then(function (user){
+        user.websites.push(websiteId);
         user.save();
     })
-}*/
+}
 function createUser(user){
     return userModel.create(user);
 }

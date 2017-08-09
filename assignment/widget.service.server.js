@@ -137,17 +137,18 @@ function updateWidget(req, res){
     return;
 }
 
-function    deleteWidget(req, res){
+function deleteWidget(req, res){
     var widgetId = req.params.widgetId;
+    var pageId = req.params.pageId;
 
     widgetModel
-        .deleteWidget(widgetId)
+        .deleteWidget(pageId, widgetId)
         .then(function (status){
            if(status){
                res.json(status);
                return;
            } else{
-               res.send(404);
+               res.sendStatus(404);
                return;
            }
         });
@@ -191,12 +192,12 @@ function createWidget(req, res){
            res.json(widget);
            return;
         }, function (err){
+            console.log("In error"+err);
             res.statusCode(404).send(err);
         });
 /*    widgets.push(widget);
     res.send(widgets);
     return;*/
-    return;
 }
 
 

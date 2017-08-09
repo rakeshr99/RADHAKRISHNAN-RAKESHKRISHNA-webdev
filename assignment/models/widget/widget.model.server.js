@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var widgetSchema = require("../widget/widget.schema.server");
 var widgetModel = mongoose.model("WidgetModel", widgetSchema);
+var pageModel = require("../page/page.model.server");
 
 widgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 widgetModel.findWidgetById = findWidgetById;
@@ -21,15 +22,32 @@ function findWidgetById(widgetId){
 
 function createWidget(pageId, widget){
     widget._page = pageId;
-    return widgetModel.create(widget);
+    var widgettmp = null;
+    return widgetModel
+        .create(widget)
+        .then(function (widgetDoc){
+            widgettmp = widgetDoc;
+            return pageModel
+                .addWidget(pageId, widgetDoc._id)
+                .then(function (page){
+                    return widgettmp;
+                });
+        });
+/*        .then(function (pageDoc) {
+            return widgettmp;
+        });*/
 }
 
 function updateWidget(widgetId, widget){
     return widgetModel.update({_id : widgetId}, {$set : widget});
 }
 
-function deleteWidget(widgetId){
-    return widgetModel.remove({_id : widgetId});
+function deleteWidget(pageId, widgetId){
+    return widgetModel
+        .remove({_id : widgetId})
+        .then(function (status){
+            return pageModel.removeWidget(pageId, widgetId);
+        });
 }
 
 function reorderWidget(pageId, start, end){

@@ -19,9 +19,10 @@ app.delete("/api/user/:userId/website/:websiteId", deleteWebsite);
 
 function deleteWebsite(req, res){
     var websiteId = req.params.websiteId;
+    var userId = req.params.userId;
 
     websiteModel
-        .deleteWebsite(websiteId)
+        .deleteWebsite(userId, websiteId)
         .then(function (status){
             if(status){
                 res.json(status);
