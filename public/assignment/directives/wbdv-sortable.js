@@ -2,7 +2,7 @@
     angular.module("wbdvDirectives",[])
             .directive('wbdvSortable',wbdvSortable );
 
-    function wbdvSortable(){
+    function wbdvSortable($routeParams){
 
         function linkFunction(scope, element, attributes){
             var initial = -1;
@@ -26,12 +26,13 @@
         }
     }
 
-    function sortableController(widgetService){
+    function sortableController(widgetService, $routeParams){
         var vm = this;
         vm.sort = sort;
+        sortableController.pageId = $routeParams.pageId;
 
         function sort(initial, final){
-            widgetService.sort(initial, final);
+            widgetService.sort(sortableController.pageId,initial, final);
         }
     }
 

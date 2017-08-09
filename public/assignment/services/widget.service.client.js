@@ -28,8 +28,8 @@
         this.widgetUrl = widgetUrl;
         this.sort =sort;
 
-        function sort(initial, final){
-            var url = "/api/directives/widgets?initial="+initial+"&final="+final;
+        function sort(pageId, initial, final){
+            var url = "/api/directives/widgets?initial="+initial+"&final="+final+"&pageId="+pageId;
             $http.put(url);
         }
         function widgetUrl(widget){

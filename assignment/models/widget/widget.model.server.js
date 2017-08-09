@@ -13,7 +13,16 @@ widgetModel.reorderWidget = reorderWidget;
 module.exports = widgetModel;
 
 function findAllWidgetsForPage(pageId){
-    return widgetModel.find({_page : pageId});
+    return pageModel
+        .findPageById(pageId)
+        .populate('widgets')
+        .exec()
+        .then(function (page){
+            console.log(page);
+            return page.widgets;
+        })
+            //console.log(page);
+    //return widgetModel.find({_page : pageId});
 }
 
 function findWidgetById(widgetId){
@@ -52,5 +61,14 @@ function deleteWidget(pageId, widgetId){
 
 function reorderWidget(pageId, start, end){
     //yet to implement
+    return pageModel
+        .findPageById(pageId)
+        .then(function (page){
+            console.log(page);
+             page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
+            console.log(page);
+            //page.markModified('widgets');
+            return page.save();
+        })
 
 }

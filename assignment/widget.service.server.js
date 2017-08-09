@@ -23,14 +23,18 @@ app.put("/api/directives/widgets", updateWidgets);
 function updateWidgets(req, res){
     var initial = req.query.initial;
     var final = req.query.final;
-    var pageId = req.params.pageId;
+    var pageId = req.query.pageId;
 
-    widgetModel
+    return widgetModel
         .reorderWidget(pageId, initial, final)
         .then(function (status){
-            res.sendStatus(200);
-            return;
-        })
+            if(status){
+                res.sendStatus(200);
+                return;
+            }else{
+                res.sendStatus(404);
+            }
+        });
 /*    widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
     res.sendStatus(200);
     return;*/
