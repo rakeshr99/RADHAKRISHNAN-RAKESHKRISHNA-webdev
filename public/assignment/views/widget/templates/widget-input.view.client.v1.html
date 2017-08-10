@@ -6,14 +6,14 @@
                 ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
                 ['indent','outdent'],['html']]"
              placeholder="{{widget.placeholder}}"
-             ng-model = "model.widget.text"
+             ng-model = "widget.text"
              value ="{{widget.text}}">
         </div>
         <input
                 ng-if = " !widget.formatted && (!widget.rows || widget.rows === 1)"
                 class="form-control"
-                value="{{widget.text}}"
-                placeholder="{{widget.placeholder}}"/>
+                placeholder="{{widget.placeholder}}"
+                ng-model = "widget.text"/>
         <textarea ng-if=" !widget.formatted && (widget.rows > 1)"
                   class="form-control"
                   rows = "{{widget.rows}}"
