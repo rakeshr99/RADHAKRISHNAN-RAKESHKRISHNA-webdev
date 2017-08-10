@@ -37,15 +37,23 @@
                ng-model = "model.widget.widgetType"
                value = "{{model.widgetType.toLowerCase()}}"/>
 
-        <div ng-model="model.widget.text"
-             text-angular
-             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
-        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
-        ['indent','outdent'],['html']]">
-        </div>
+        <label>Text</label>
+        <input ng-model="model.widget.text" class="form-control"/>
+        <label>Rows</label>
+        <input ng-model="model.widget.rows" class="form-control" type="number"/>
+        <label>Placeholder</label>
+        <input ng-model="model.widget.placeholder" class="form-control"/>
+        <label>Formatted</label>
+        <div class="input-group">
+                <input type="text" class="form-control" value="Formatted" aria-label="...">
+            <span class="input-group-addon">
+                <input type="checkbox" ng-model="model.widget.formatted" ng-checked = 'model.formatted' aria-label="...">
+            </span>
+        </div><!-- /input-group -->
         <a class="btn btn-default btn-block btn-danger"
            ng-click = "model.deleteWidget(model.widget._id)"
            role="button">Delete</a>
+       <!-- <input ng-model="model.widget.formatted" type="checkbox"/>-->
 
         <div ng-include="'views/footerCommon.view.client.html'"></div>
     </div>

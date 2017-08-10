@@ -81,6 +81,10 @@
                     model.text = model.widget.text;
                     model.width = model.widget.width;
                     model.url = model.widget.url;
+                    model.rows = model.widget.rows;
+                    model.placeholder = model.widget.placeholder;
+                    model.formatted = model.widget.formatted;
+
                 });
         }
 

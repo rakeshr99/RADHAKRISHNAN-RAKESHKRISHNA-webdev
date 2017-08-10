@@ -225,6 +225,13 @@ function findWidgetsByPageId(req, res){
                         }
                     }else if(widgets[w].widgetType == "HTML"){
                         _widgets.push(widgets[w]);
+                    }else if(widgets[w].widgetType == "INPUT"){
+                        if(!(widgets[w].text == null &&
+                            widgets[w].rows == null &&
+                            widgets[w].placeholder == null &&
+                            widgets[w].formatted == null)) {
+                            _widgets.push(widgets[w]);
+                        }
                     }
                 //}
             }
