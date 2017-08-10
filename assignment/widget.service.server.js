@@ -80,7 +80,7 @@ function getWidgetByIdForUpload(widgetId, filename, pageId){
         .then(function (widget){
             widget.url = '/uploads/'+filename;
             widgetModel
-                .createWidget(pageId,widget)
+                .updateWidget(widgetId,widget)
                 .then(function(widget){
                     res.json(widget);
                     return;
